@@ -9,6 +9,7 @@ import SignUp from 'src/pages/sign-up';
 import About from 'src/pages/about';
 import NewPost from 'src/pages/new-post';
 import Post from 'src/pages/post';
+import MyPage from 'src/pages/my-page';
 import * as Actions from './actions';
 import './style.css';
 
@@ -19,16 +20,16 @@ class App extends Component {
   render() {
     return (
       <>
-        <Header user={this.props.user} signOut={this.props.signOut}/>
+        <Header user={this.props.user} userData={this.props.userData} signOut={this.props.signOut}/>
         <Switch>
           <Route path='/sign-in' exact={true} component={SignIn}/>
           <Route path='/sign-up' exact={true} component={SignUp}/>
           {this.props.user && <Route path='/new-post'exact={true} component={NewPost}/>}
           <Route path='/about' exact={true} component={About}/>
+          {this.props.user && <Route path='/my-page/:id' exact={true} component={MyPage}/>}
           <Route path='/post/:id' exact={true} component={Post}/>
           <Route path='/' exact={true} component={MainPage}/>
         </Switch>
-        
         
       </>
     );
@@ -37,7 +38,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    user: state.applicationReducer.user
+    user: state.applicationReducer.user,
+    userData: state.myPage.userData
   });
 };
 

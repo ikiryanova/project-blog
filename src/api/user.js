@@ -39,3 +39,18 @@ export function checkLogin(login) {
     }
   })
 }
+
+export function getUserData(id) {
+  return axiosFetch({
+    url: `users/${id}`,
+    method: 'GET'
+  });
+}
+
+export function changePassword(data) {
+  return axiosFetch({
+    url: 'users/change/password/',
+    method: 'PUT',
+    data: data
+  })
+}

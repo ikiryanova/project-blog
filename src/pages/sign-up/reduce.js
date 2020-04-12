@@ -71,10 +71,22 @@ export default function signUpReducer(state = initState, action) {
           login: action.payload.exists ? 'Такой логин уже есть' : ''
         }
       }
-    case 'SIGN-UP_FAIL' :
+    case 'SIGN-UP_FAIL':
       return {
         ...state,
         errors: getFormErrors(action.payload)
+      }
+    case 'SIGN-UP_SUCCESS':
+      return {
+        ...state,
+        dataForm: {
+          ...state.dataForm,
+          login: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: ''
+        }
       }
     default:
       return state;

@@ -6,11 +6,11 @@ export const changeFieldAction = ({ fieldId, value }) => ({
   payload: { fieldId, value }
 });
 
-export const signUpAction = (data) => {
+export const signUpAction = (dataForm) => {
   return async function(dispatch) {
     try {
       dispatch({ type:'SIGN-UP_REQUEST'} );
-      const response = await API.user.signUp(data);
+      const response = await API.user.signUp(dataForm);
       dispatch({ type: 'SIGN-UP_SUCCESS', payload: response.data });
       const actionPush = push('/');
       dispatch(actionPush);

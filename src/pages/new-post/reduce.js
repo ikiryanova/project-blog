@@ -15,6 +15,14 @@ export default function newPostReducer(state = initState, action) {
           [action.payload.fieldId]: action.payload.value
         }
       };
+    case 'NEW_POST_CREATE_SUCCESS': 
+    return {
+      ...state, 
+      data: {
+        title: '',
+        content: ''
+      }
+    };
     default:
       return state;
   }

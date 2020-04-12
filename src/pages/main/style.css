@@ -4,8 +4,7 @@
 }
 .postWrapper {
   margin-bottom: 15px;
-  border: 1px solid black;
-  border: 1px solid black;
+  border: 1px solid #2a2a2a;
   border-radius: 4px;
 }
 
@@ -16,7 +15,7 @@
 
 .postTitle {
   font-weight: bold;
-  background: black;
+  background: #2a2a2a;
   color: white;
   font-size: 20px;
   text-decoration: none;
@@ -26,12 +25,15 @@
 .linkTitle {
   color: white;
   text-decoration: none;
+  word-break:break-all;
 }
 
 .postContent {
   margin-top: 5px;
   /* white-space: pre; */
   padding: 15px;
+  text-align: justify;
+  word-break:break-all;
 }
 
 .footer {

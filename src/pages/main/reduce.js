@@ -8,12 +8,12 @@ export default function mainReducer(state = initState, action) {
     case 'MAIN_PAGE_INIT_GET_POSTS_SUCCESS':
       return {
         ...state,
-        posts: action.payload
+        posts: action.payload,
       }
     case 'MAIN_PAGE_SCROLL_GET_POSTS_REQUEST':
       return {
         ...state,
-        isLoadingPosts: true
+        isLoadingPosts: true,
       }
     case 'MAIN_PAGE_SCROLL_GET_POSTS_SUCCESS':
       return {

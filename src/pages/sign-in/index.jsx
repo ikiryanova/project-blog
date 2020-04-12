@@ -17,6 +17,7 @@ class SignIn extends Component {
   }
 
   render() {
+    const { errors } = this.props;
     return (
       <div className={style.signUpWrapper}>
         <div className={style.signUpRow}>
@@ -26,6 +27,7 @@ class SignIn extends Component {
               id="login"
               value={this.props.dataForm.login}
               onChange={this.props.changeFieldAction}
+              error={errors}
             />
           </div>
         </div>
@@ -36,6 +38,7 @@ class SignIn extends Component {
               id="password"
               value={this.props.dataForm.password}
               onChange={this.props.changeFieldAction}
+              error={errors}
             />
           </div>
         </div>
@@ -46,7 +49,8 @@ class SignIn extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  dataForm: state.signIn.dataForm
+  dataForm: state.signIn.dataForm,
+  errors: state.signIn.errors
 });
 
 export default connect(mapStateToProps, Actions)(SignIn);

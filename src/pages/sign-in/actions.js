@@ -14,7 +14,12 @@ export const signInAction = (dataForm) => {
       dispatch({ type: 'SIGN-IN_SUCCESS', payload: response.data });
       dispatch(push('/'));
     } catch (error) {
-      dispatch({ type: 'SIGN-IN_FAIL' }); 
+      if (error.response) {
+        dispatch({ type: 'SIGN-IN_FAIL', payload: error.response.data });
+      }
     }
+    // catch (error) {
+    //   dispatch({ type: 'SIGN-IN_FAIL' }); 
+    // }
   }
 }

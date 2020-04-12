@@ -9,6 +9,7 @@ import signUpReducer from 'src/pages/sign-up/reduce';
 import newPostReducer from 'src/pages/new-post/reduce';
 import postReduser from 'src/pages/post/reduce';
 import mainReduser from 'src/pages/main/reduce';
+import myPageReducer from 'src/pages/my-page/reduce';
 import { history } from 'src/history';
 
 const logger = createLogger({
@@ -24,7 +25,8 @@ const createRootReducer = (history) => combineReducers({
   signUp: signUpReducer,
   newPost: newPostReducer,
   post: postReduser,
-  main: mainReduser
+  main: mainReduser,
+  myPage: myPageReducer
 });
  
 

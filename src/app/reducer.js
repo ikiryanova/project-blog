@@ -8,6 +8,7 @@ export default function appReducer(state = initState, action) {
       case 'SIGN-IN_SUCCESS':
       case 'SIGN-UP_SUCCESS':
       case 'APPLICATION-AUTH':
+      case 'CHANGE_USER_PASSWORD_SUCCESS':
         return {
           ...state,
           user: action.payload

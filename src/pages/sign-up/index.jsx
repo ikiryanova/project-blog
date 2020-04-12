@@ -10,6 +10,11 @@ class SignUp extends Component {
     changeFieldAction: PropTypes.func.isRequired,
   };
 
+  onClick = () => {
+    console.log('this props', this.props);
+    this.props.push('/');
+  }
+
   render() {
     return (
       <div>
@@ -73,6 +78,7 @@ class SignUp extends Component {
             />
           </div>
         </div>
+        <button onClick={this.onClick}>Sign up</button>
       </div>
     );
   }

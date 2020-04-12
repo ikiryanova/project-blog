@@ -30,7 +30,7 @@ class ModalChangePassword extends Component {
                   id="currentPassword"
                   value={this.props.dataModal.currentPassword}
                   onChange={this.props.changeFieldAction}
-                  error={this.props.errors}
+                  error={this.props.errors.currentPassword}
                 />
               </div>
             </div>
@@ -41,7 +41,7 @@ class ModalChangePassword extends Component {
                   id="newPassword"
                   value={this.props.dataModal.newPassword}
                   onChange={this.props.changeFieldAction}
-                  error={this.props.errors}
+                  error={this.props.errors.newPassword}
                 />
               </div>
             </div>

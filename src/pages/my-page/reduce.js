@@ -8,19 +8,52 @@ const initState = {
     currentPassword: '',
     newPassword: ''
   },
-  errors: ''
+  errors: {
+    currentPassword: '',
+    newPassword: ''
+  }
 };
 
-function mapErrorFromServer(status, currentPassword, newPassword) {
+// function mapErrorFromServer(status, currentPassword, newPassword) {
+//   switch (status) {
+//     case 400:
+//       if (!currentPassword || !newPassword) {
+//         return 'Поле обязательно для заполнения!';
+//       } else if (currentPassword.length < 3 || newPassword.length < 3) {
+//         return 'Не менее 3х символов';
+//       }
+//     case 200:
+//       return 'Текущий пароль не верный';
+//     default:
+//       return status;
+//   }
+// }
+
+function errorCurrentPassword(status, currentPassword) {
   switch (status) {
     case 400:
-      if (!currentPassword || !newPassword) {
+      if (!currentPassword) {
         return 'Поле обязательно для заполнения!';
-      } else if (currentPassword.length < 3 || newPassword.length < 3) {
+      } else if (currentPassword.length < 3) {
         return 'Не менее 3х символов';
-      }
+      } else return '';
     case 200:
       return 'Текущий пароль не верный';
+    default:
+      return status;
+  }
+}
+
+function errorNewPassword(status, newPassword) {
+  switch (status) {
+    case 400:
+      if (!newPassword) {
+        return 'Поле обязательно для заполнения!';
+      } else if (newPassword.length < 3) {
+        return 'Не менее 3х символов';
+      } else return '';
+      case 200:
+        return '';
     default:
       return status;
   }
@@ -77,7 +110,12 @@ export default function myPageReducer(state = initState, action) {
       const { status } = action.payload;
       return {
         ...state,
-        errors: mapErrorFromServer(status, state.dataModal.currentPassword, state.dataModal.newPassword)
+        errors: {
+          ...state.errors,
+          currentPassword: errorCurrentPassword(status, state.dataModal.currentPassword),
+          newPassword: errorNewPassword(status, state.dataModal.newPassword)
+        },
+        //errors: mapErrorFromServer(status, state.dataModal.currentPassword, state.dataModal.newPassword)
       }
     default:
       return state;

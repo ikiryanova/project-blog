@@ -17,7 +17,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { errors } = this.props;
+    const { errors, changeFieldAction, dataForm } = this.props;
     return (
       <div className={style.signUpWrapper}>
         <div className={style.signUpRow}>
@@ -25,8 +25,8 @@ class SignIn extends Component {
             <Input
               placeholder={'Login'}
               id="login"
-              value={this.props.dataForm.login}
-              onChange={this.props.changeFieldAction}
+              value={dataForm.login}
+              onChange={changeFieldAction}
               error={errors}
             />
           </div>
@@ -36,8 +36,8 @@ class SignIn extends Component {
             <Input
               placeholder={'Password'}
               id="password"
-              value={this.props.dataForm.password}
-              onChange={this.props.changeFieldAction}
+              value={dataForm.password}
+              onChange={changeFieldAction}
               error={errors}
             />
           </div>

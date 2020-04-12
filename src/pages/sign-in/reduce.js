@@ -45,8 +45,9 @@ export default function signInReducer(state = initState, action) {
         dataForm: {
           ...state.dataForm,
           login: '',
-          password: ''
-        }
+          password: '',
+        },
+        errors: ''
       }
     default:
       return state;

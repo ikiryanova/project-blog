@@ -6,7 +6,9 @@ import thunk from 'redux-thunk';
 import applicationReducer from 'src/app/reducer';
 import signInReducer from 'src/pages/sign-in/reduce';
 import signUpReducer from 'src/pages/sign-up/reduce';
-import postReducer from 'src/pages/new-post/reduce';
+import newPostReducer from 'src/pages/new-post/reduce';
+import postReduser from 'src/pages/post/reduce';
+import mainReduser from 'src/pages/main/reduce';
 import { history } from 'src/history';
 
 const logger = createLogger({
@@ -20,7 +22,9 @@ const createRootReducer = (history) => combineReducers({
   applicationReducer: applicationReducer,
   signIn: signInReducer,
   signUp: signUpReducer,
-  post: postReducer
+  newPost: newPostReducer,
+  post: postReduser,
+  main: mainReduser
 });
  
 

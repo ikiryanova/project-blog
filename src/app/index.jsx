@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route} from 'react-router-dom';
+
 import Header from 'src/components/header';
+import MainPage from 'src/pages/main';
 import SignIn from 'src/pages/sign-in';
 import SignUp from 'src/pages/sign-up';
 import About from 'src/pages/about';
-import PostPage from 'src/pages/new-post';
+import NewPost from 'src/pages/new-post';
+import Post from 'src/pages/post';
 import * as Actions from './actions';
 import './style.css';
 
@@ -20,9 +23,10 @@ class App extends Component {
         <Switch>
           <Route path='/sign-in' exact={true} component={SignIn}/>
           <Route path='/sign-up' exact={true} component={SignUp}/>
-          <Route path='/new-post'exact={true} component={PostPage}/>>
-          <Route path='/about' exact={true} component={About}/>>
-          <Route path='/' exact={true} render={() => <h1>Main page</h1>}/>
+          {this.props.user && <Route path='/new-post'exact={true} component={NewPost}/>}
+          <Route path='/about' exact={true} component={About}/>
+          <Route path='/post/:id' exact={true} component={Post}/>
+          <Route path='/' exact={true} component={MainPage}/>
         </Switch>
         
         

@@ -1,59 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'connected-react-router';
-import PropTypes from 'prop-types';
+
+import style from './style.css';
 import Input from 'src/components/input';
 import Textarea from 'src/components/textarea';
+import Button from 'src/components/button';
 import * as Actions from './actions';
 
-class PostPage extends Component {
-    static propTypes = {
-        dataForm: PropTypes.object.isRequired,
-        changeFieldAction: PropTypes.func.isRequired,
-      };
-    onClick = () => {
-        this.props.push('/');
-      }
-    render() {
-        return(
-            <div>
-                <div>
-                    <div>
-                        Заголовок
-                    </div>
-                    <div>
-                        <Input
-                            id="title"
-                            value={this.props.dataForm.title}
-                            onChange={this.props.changeFieldAction}
-                        />
-                    </div>
-                </div>
+class NewPost extends Component {
+  // static propTypes = {
+  //   dataForm: PropTypes.object.isRequired,
+  //   changeFieldAction: PropTypes.func.isRequired,
+  // };
 
-                <div>
-                    <div>
-                        Содержание поста
-                    </div>
-                    <div>
-                        <Textarea
-                            id="content"
-                            value={this.props.dataForm.content}
-                            onChange={this.props.changeFieldAction}
-                        />
-                    </div>
-                </div>
-                <button onClick={this.onClick}>Опубликовать</button>
-            </div>
-        )
-    }
+  onSubmit = () => {
+    this.props.createPostAction(this.props.data);
+  }
+  onChangeData = (data) => {
+    const fieldId = data.fieldId;
+    const value = data.value;
+    this.props.changeDataAction(fieldId, value);
+  };
+
+  render() {
+    const { data } = this.props;
+    return(
+      <div className={style.postFormWrapper}>
+    
+        <div className={style.postRow}>
+          <div>Заголовок</div>
+          <Input
+            id="title"
+            value={data.title}
+            onChange={this.onChangeData}
+          />
+        </div>
+        
+        <div className={style.postRow}>
+          <div>Содержание поста</div>
+          <Textarea
+            id="content"
+            value={data.content}
+            onChange={this.onChangeData}
+          />
+        </div>
+        
+        <Button id="submit" onClick={this.onSubmit}>Создать</Button>
+      </div>
+    )
+  }
 }
 
 function mapStateToProps(state) {
-    return{
-        dataForm: state.post.dataForm
-    };
+  return {
+    data: state.newPost.data
+  };
 }
-export default connect(mapStateToProps, {
-    push,
-    ...Actions
-  })(PostPage);
+
+
+export default connect(mapStateToProps, Actions)(NewPost);

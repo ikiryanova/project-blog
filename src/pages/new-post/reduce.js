@@ -1,19 +1,20 @@
 const initState = {
-  dataForm: {
+  data: {
     title: '',
     content: ''
   }
 };
 
-export default function postReducer(state = initState, action) {
+export default function newPostReducer(state = initState, action) {
   switch (action.type) {
-    case 'NEW_POST_CHANGE_DATA_FORM':
-      return (state, {
-        dataForm: {
-          ...state.dataForm,
+    case 'NEW_POST_DATA_CHANGE':
+      return {
+        ...state, 
+        data: {
+          ...state.data,
           [action.payload.fieldId]: action.payload.value
         }
-      });
+      };
     default:
       return state;
   }

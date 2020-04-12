@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import style from './style.css';
 export default class Textarea extends Component {
   onChange = (e) => {
     const value = e.target.value;
@@ -16,6 +16,7 @@ export default class Textarea extends Component {
         type="text"
         value={value}
         onChange={this.onChange}
+        className={style.inputComponent}
       />
     );
   }

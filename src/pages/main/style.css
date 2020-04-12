@@ -1,0 +1,18 @@
+.postWrapper {
+  margin-bottom: 15px;
+  border: 1px solid black;
+}
+
+.postList {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.postTitle {
+  font-weight: bold;
+}
+
+.postContent {
+  margin-top: 5px;
+  /* white-space: pre; */
+}

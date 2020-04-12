@@ -6,40 +6,26 @@ import SignIn from 'src/pages/sign-in';
 import SignUp from 'src/pages/sign-up';
 import About from 'src/pages/about';
 import PostPage from 'src/pages/new-post';
-import FooterCounter from 'src/components/footer-counter'
 import * as Actions from './actions';
 import './style.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.auth();
+  }
   render() {
     return (
       <>
-        <Header />
+        <Header user={this.props.user} signOut={this.props.signOut}/>
         <Switch>
-          <Route path='/sign-in'>
-            <SignIn />
-          </Route>
-
-          <Route path='/sign-up'>
-            <SignUp />
-          </Route>
-
-          <Route path='/new-post'>
-            <PostPage />
-          </Route>
-
-          <Route path='/about'>
-            <About />
-          </Route>
-
-          <Route path='/'>
-            <h1>Main page</h1>
-          </Route>
-
+          <Route path='/sign-in' exact={true} component={SignIn}/>
+          <Route path='/sign-up' exact={true} component={SignUp}/>
+          <Route path='/new-post'exact={true} component={PostPage}/>>
+          <Route path='/about' exact={true} component={About}/>>
+          <Route path='/' exact={true} render={() => <h1>Main page</h1>}/>
         </Switch>
         
         
-        {/* <FooterCounter counter={this.props.counter} increaseAction={this.props.increaseAction} decreaseAction={this.props.decreaseAction}/> */}
       </>
     );
   }
@@ -47,7 +33,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    counter: state.applicationReducer.counter
+    user: state.applicationReducer.user
   });
 };
 

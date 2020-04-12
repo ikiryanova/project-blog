@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
+import thunk from 'redux-thunk';
 
 import applicationReducer from 'src/app/reducer';
 import signInReducer from 'src/pages/sign-in/reduce';
@@ -12,10 +13,7 @@ const logger = createLogger({
   collapsed: true
 });
 
-const middlewares =  [
-  routerMiddleware(history),
-  logger,
-]
+const routerMiddle = routerMiddleware(history);
 
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
@@ -24,7 +22,9 @@ const createRootReducer = (history) => combineReducers({
   signUp: signUpReducer,
   post: postReducer
 });
+ 
 
-const store = createStore(createRootReducer(history), applyMiddleware(...middlewares));
+const store = createStore(createRootReducer(history), applyMiddleware(routerMiddle, logger, thunk));
+
 
 export default store;

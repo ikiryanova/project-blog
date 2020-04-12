@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { push } from 'connected-react-router';
 import Input from 'src/components/input';
 import * as Actions from './actions';
 
@@ -10,9 +11,8 @@ class SignUp extends Component {
     changeFieldAction: PropTypes.func.isRequired,
   };
 
-  onClick = () => {
-    console.log('this props', this.props);
-    this.props.push('/');
+  onSubmit = () => {
+    this.props.signUpAction(this.props.dataForm);
   }
 
   render() {
@@ -36,8 +36,8 @@ class SignUp extends Component {
           </div>
           <div>
             <Input
-              id="firstname"
-              value={this.props.dataForm.firstname}
+              id="firstName"
+              value={this.props.dataForm.firstName}
               onChange={this.props.changeFieldAction}
             />
           </div>
@@ -48,8 +48,8 @@ class SignUp extends Component {
           </div>
           <div>
             <Input
-              id="lastname"
-              value={this.props.dataForm.lastname}
+              id="lastName"
+              value={this.props.dataForm.lastName}
               onChange={this.props.changeFieldAction}
             />
           </div>
@@ -78,7 +78,7 @@ class SignUp extends Component {
             />
           </div>
         </div>
-        <button onClick={this.onClick}>Sign up</button>
+        <button onClick={this.onSubmit}>Sign up</button>
       </div>
     );
   }
@@ -88,4 +88,8 @@ const mapStateToProps = (state) => ({
   dataForm: state.signUp.dataForm
 });
 
-export default connect(mapStateToProps, Actions)(SignUp);
+export default connect(mapStateToProps, {
+  push,
+  ...Actions
+})(SignUp);
+

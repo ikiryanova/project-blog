@@ -3,8 +3,8 @@ import cloneDeep from 'lodash/cloneDeep';
 const initState = {
   dataForm: {
     login: '',
-    firsname: '',
-    lastname: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: ''
   }

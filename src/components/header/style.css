@@ -1,0 +1,32 @@
+.wrapper {
+  background: #333;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.wrapperUl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapperUl li {
+  display: inline-flex;
+  border-right: 1px solid #888;
+}
+
+.link {
+  display: inline-flex;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #111;
+}
+
+

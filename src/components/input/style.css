@@ -1,6 +1,24 @@
+* {
+  font-family: sans-serif;
+}
+
 .inputComponent {
-  padding: 4px 8px;
+  padding: 6px 8px;
   width: 100%;
   outline: none;
   border: 1px solid #ccc;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+  margin-top: 6px;
 }
+.error {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+}
+
+.inputError {
+  border-color: red;
+} 

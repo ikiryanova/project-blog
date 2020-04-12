@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'connected-react-router';
 import Input from 'src/components/input';
+import style from './style.css';
 import * as Actions from './actions';
 
 class SignUp extends Component {
@@ -15,77 +16,80 @@ class SignUp extends Component {
     this.props.signUpAction(this.props.dataForm);
   }
 
+  checkLogin = () => {
+    const { checkLoginAction, dataForm} = this.props;
+    checkLoginAction(dataForm.login);
+  }
+
   render() {
+    const { errors } = this.props;
     return (
-      <div>
-        <div>
-          <div>
-            login
-          </div>
+      <div className={style.signUpWrapper}>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Login'}
               id="login"
               value={this.props.dataForm.login}
               onChange={this.props.changeFieldAction}
+              onBlur={this.checkLogin}
+              error={errors.login}
             />
           </div>
         </div>
-        <div>
-          <div>
-            first name
-          </div>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'First name'}
               id="firstName"
               value={this.props.dataForm.firstName}
               onChange={this.props.changeFieldAction}
+              error={errors.firstName}
             />
           </div>
         </div>
-        <div>
-          <div>
-            last name
-          </div>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Last name'}
               id="lastName"
               value={this.props.dataForm.lastName}
               onChange={this.props.changeFieldAction}
+              error={errors.lastName}
             />
           </div>
         </div>
-        <div>
-          <div>
-            email
-          </div>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Email'}
               id="email"
               value={this.props.dataForm.email}
               onChange={this.props.changeFieldAction}
+              error={errors.email}
             />
           </div>
         </div>
-        <div>
-          <div>
-            password
-          </div>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Password'}
               id="password"
               value={this.props.dataForm.password}
               onChange={this.props.changeFieldAction}
+              error={errors.password}
             />
           </div>
         </div>
-        <button onClick={this.onSubmit}>Sign up</button>
+        <button className={style.submit} onClick={this.onSubmit}>Зарегистрироваться</button>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  dataForm: state.signUp.dataForm
+  dataForm: state.signUp.dataForm,
+  errors: state.signUp.errors
 });
 
 export default connect(mapStateToProps, {

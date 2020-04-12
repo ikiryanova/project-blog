@@ -1,6 +1,11 @@
+* {
+  font-family: sans-serif;
+}
+
 .postFormWrapper {
   width: 500px;
-  border: 1px solid black;
+  border: 1px solid darkgray;
+  border-radius: 6px;
   margin: 100px auto;
   padding: 40px 20px;
 }

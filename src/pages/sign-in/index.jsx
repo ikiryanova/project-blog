@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Input from 'src/components/input';
+import style from '../sign-up/style.css'
 import * as Actions from './actions';
 
 class SignIn extends Component {
@@ -17,32 +18,28 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <div>
-            login
-          </div>
+      <div className={style.signUpWrapper}>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Login'}
               id="login"
               value={this.props.dataForm.login}
               onChange={this.props.changeFieldAction}
             />
           </div>
         </div>
-        <div>
-          <div>
-            password
-          </div>
+        <div className={style.signUpRow}>
           <div>
             <Input
+              placeholder={'Password'}
               id="password"
               value={this.props.dataForm.password}
               onChange={this.props.changeFieldAction}
             />
           </div>
         </div>
-        <button onClick={this.onSubmit}>Login</button>
+        <button className={style.submit} onClick={this.onSubmit}>Login</button>
       </div>
     );
   }

@@ -1,18 +1,90 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 .postWrapper {
   margin-bottom: 15px;
   border: 1px solid black;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .postList {
   width: 500px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .postTitle {
   font-weight: bold;
+  background: black;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.linkTitle {
+  color: white;
+  text-decoration: none;
 }
 
 .postContent {
   margin-top: 5px;
   /* white-space: pre; */
+  padding: 15px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 15px 10px;
+}
+
+.like {
+  display: inline-block;
+  color: #50f84a;
+  font-weight: bold;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.dislike {
+  display: inline-block;
+  color: #f80511;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.viewWrapper{
+  display: inline-flex;
+  align-items: center;
+}
+
+.leftCol {
+  display: inline-flex;
+  align-items: center;
+}
+
+.eye {
+  position: relative;
+  color: #111;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #111;
+  border-radius: 75% 15%;
+  transform: rotate(45deg);
+  margin-right: 8px;
+}
+
+.eye:before {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 4px;
+  top: 3.25px;
+  left: 3.25px;
+  border: 2px solid #111;
+  border-radius: 50%;
 }

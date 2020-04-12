@@ -1,0 +1,29 @@
+* {
+  font-family: sans-serif;
+}
+
+.signUpWrapper {
+  width: 500px;
+  border: 1px solid darkgray;
+  margin: 100px auto;
+  padding: 40px 20px;
+  border-radius: 6px;
+}
+
+.signUpRow {
+  margin-bottom: 15px;
+}
+
+.signUpRow:last-child {
+  margin-bottom: 0;
+}
+
+.submit {
+  padding: 10px 20px;
+  background-color: #0447e4;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  margin-top: 6px;
+}

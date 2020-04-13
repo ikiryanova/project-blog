@@ -8,7 +8,7 @@ export const signIn = (data) => {
   });
 }
 
-export const signUp = (data) => {
+export function signUp(data) {
   return axiosFetch({
     url: 'users/signup',
     method: 'POST',

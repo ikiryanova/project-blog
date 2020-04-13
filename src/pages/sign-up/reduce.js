@@ -86,6 +86,14 @@ export default function signUpReducer(state = initState, action) {
           lastName: '',
           email: '',
           password: ''
+        },
+        errors: {
+          ...state.errors,
+          login: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: ''
         }
       }
     default:

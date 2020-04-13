@@ -75,7 +75,12 @@ export default function myPageReducer(state = initState, action) {
     case 'CLOSE_MODAL_CHANGE_PASSWORD':
       return {
         ...state,
-        isShowModal: false
+        isShowModal: false,
+        errors: {
+          ...state.errors,
+          currentPassword: '',
+          newPassword: ''
+        }
       };
     case 'GET_USER_DATA_REQUEST':
       return {
@@ -104,7 +109,11 @@ export default function myPageReducer(state = initState, action) {
           currentPassword: '',
           newPassword: ''
         },
-        errors: ''
+        errors: {
+          ...state.errors,
+          currentPassword: '',
+          newPassword: ''
+        }
       }
     case 'CHANGE_USER_PASSWORD_FAIL':
       const { status } = action.payload;
